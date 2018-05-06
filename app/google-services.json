@@ -1,0 +1,73 @@
+{
+  "project_info": {
+    "project_number": "956307430314",
+    "firebase_url": "https://frameworkproject-c9755.firebaseio.com",
+    "project_id": "frameworkproject-c9755",
+    "storage_bucket": "frameworkproject-c9755.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:956307430314:android:54704b5ba547278f",
+        "android_client_info": {
+          "package_name": "app.nis.com.frameworkapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "956307430314-fjujhhb9uclulv0b70v467o73a5i9rmf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDI_36xf1gHvxGAj9HHN0uEM-XVURRhVNk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:956307430314:android:218d997f4ecc430f",
+        "android_client_info": {
+          "package_name": "com.nis.frameworkapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "956307430314-fjujhhb9uclulv0b70v467o73a5i9rmf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDI_36xf1gHvxGAj9HHN0uEM-XVURRhVNk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
