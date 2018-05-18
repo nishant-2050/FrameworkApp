@@ -1,6 +1,7 @@
 package com.nis.frameworkapp.recipies.data.repo;
 
 import android.arch.lifecycle.LiveData;
+import android.arch.lifecycle.MediatorLiveData;
 import android.content.Context;
 
 import com.nis.frameworkapp.common.AppExecutors;
@@ -32,7 +33,11 @@ public class RecipeDataRepo {
     }
 
     public LiveData<ResultStatus<RecipeList>> getRecipeList() {
-        return recipeDataHandlerNetwork.startFetchRecipeService();
+        MediatorLiveData<ResultStatus<RecipeList>> liveData = new MediatorLiveData<>();
+        liveData.addSource(recipeDataHandlerNetwork.startFetchRecipeService(), resultStatus -> {
+            liveData.setValue(resultStatus);
+        });
+        return liveData;
     }
 
 }

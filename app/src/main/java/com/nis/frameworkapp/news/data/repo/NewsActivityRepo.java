@@ -1,6 +1,7 @@
 package com.nis.frameworkapp.news.data.repo;
 
 import android.arch.lifecycle.LiveData;
+import android.arch.lifecycle.MediatorLiveData;
 import android.content.Context;
 
 import com.nis.frameworkapp.common.AppExecutors;
@@ -31,6 +32,10 @@ public class NewsActivityRepo {
     }
 
     public LiveData<ResultStatus<NewsList>> getNewsList() {
-        return newsListDataHandlerNetwork.startNewsService();
+        MediatorLiveData<ResultStatus<NewsList>> liveData = new MediatorLiveData<>();
+        liveData.addSource(newsListDataHandlerNetwork.startNewsService(), resultStatus -> {
+            liveData.setValue(resultStatus);
+        });
+        return liveData;
     }
 }
