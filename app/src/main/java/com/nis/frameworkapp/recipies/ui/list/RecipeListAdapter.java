@@ -2,6 +2,8 @@ package com.nis.frameworkapp.recipies.ui.list;
 
 
 import android.content.Context;
+import android.databinding.BindingAdapter;
+import android.databinding.DataBindingUtil;
 import android.support.annotation.NonNull;
 import android.support.v7.util.DiffUtil;
 import android.support.v7.widget.RecyclerView;
@@ -15,6 +17,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 
 import com.nis.frameworkapp.R;
+import com.nis.frameworkapp.databinding.RecipeListBinder;
 import com.nis.frameworkapp.recipies.data.model.Recipe;
 import com.nis.frameworkapp.recipies.data.model.RecipeList;
 
@@ -35,18 +38,16 @@ public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter
     public RecipeAdapterViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(mContext).inflate(R.layout.recipe_list_item, parent, false);
         view.setFocusable(true);
-        return new RecipeAdapterViewHolder(view);
+        RecipeListBinder recipeListBinder = DataBindingUtil.bind(view);
+        return new RecipeAdapterViewHolder(recipeListBinder);
     }
 
     @Override
     public void onBindViewHolder(@NonNull RecipeAdapterViewHolder holder, int position) {
         Recipe recipe = mRecipeList.recipes.get(position);
-        holder.title.setText(recipe.title);
-        holder.ingredients.setText(recipe.ingredients);
-        Glide.with(mContext)
-                .load(recipe.thumbnail)
-                .apply(RequestOptions.circleCropTransform())
-                .into(holder.thumbnail);
+        recipe.position = position;
+        holder.recipeListBinder.setRecipe(recipe);
+        holder.recipeListBinder.setOnClickHandler(mClickHandler);
     }
 
     @Override
@@ -56,7 +57,7 @@ public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter
     }
 
     public interface RecipeAdapterOnItemClickHandler {
-        void onItemClick(int selectedItem);
+        void onItemClick(Recipe selectedItem);
     }
 
     public void swapRecipeList(final RecipeList newRecipeList) {
@@ -94,21 +95,22 @@ public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter
         }
     }
 
-    class RecipeAdapterViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        private TextView title, ingredients;
-        private ImageView thumbnail;
+    class RecipeAdapterViewHolder extends RecyclerView.ViewHolder {
+       public RecipeListBinder recipeListBinder;
 
-        RecipeAdapterViewHolder(View view) {
-            super(view);
-            this.title = view.findViewById(R.id.id_title);
-            this.ingredients = view.findViewById(R.id.id_ingr);
-            this.thumbnail = view.findViewById(R.id.id_thumbnail);
-            view.setOnClickListener(this);
+        RecipeAdapterViewHolder(RecipeListBinder binder) {
+            super(binder.getRoot());
+            this.recipeListBinder = binder;
         }
+    }
 
-        @Override
-        public void onClick(View v) {
-            mClickHandler.onItemClick(getAdapterPosition());
+    public static class LoadImageBindingAdapter {
+        @BindingAdapter("imageUrl")
+        public static void loadImage(ImageView view, String url){
+            Glide.with(view)
+                    .load(url)
+                    .apply(RequestOptions.circleCropTransform())
+                    .into(view);
         }
     }
 }

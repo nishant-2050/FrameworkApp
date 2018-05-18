@@ -17,6 +17,7 @@ import com.nis.frameworkapp.R;
 import com.nis.frameworkapp.common.AppExecutors;
 import com.nis.frameworkapp.common.BaseFragment;
 import com.nis.frameworkapp.common.ResultStatus;
+import com.nis.frameworkapp.recipies.data.model.Recipe;
 import com.nis.frameworkapp.recipies.data.model.RecipeList;
 import com.nis.frameworkapp.recipies.data.repo.RecipeDataRepo;
 import com.nis.frameworkapp.recipies.ui.RecipeActivityViewModel;
@@ -39,8 +40,8 @@ public class RecipeListFragment extends BaseFragment implements
     }
 
     @Override
-    public void onItemClick(int selectedItem) {
-        listActionListener.showRecipeDetailScreen(selectedItem);
+    public void onItemClick(Recipe selectedItem) {
+        listActionListener.showRecipeDetailScreen(selectedItem.position);
     }
 
     @Nullable

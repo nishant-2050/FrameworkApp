@@ -9,4 +9,5 @@ public class Recipe {
     public String link;
     public String ingredients;
     public String thumbnail;
+    public int position;
 }
