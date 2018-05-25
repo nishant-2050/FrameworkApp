@@ -15,8 +15,6 @@ public class RecipeActivity extends BaseActivity implements RecipeListFragment
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //below code can be used if we want to show UI inside Activity instead of Fragments
-        //setupView(R.layout.container_fixed, R.layout.recipe_list_content, false, false);
         initView();
     }
 

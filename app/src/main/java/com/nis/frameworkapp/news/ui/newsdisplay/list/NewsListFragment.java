@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.nis.frameworkapp.R;
 import com.nis.frameworkapp.common.AppExecutors;
+import com.nis.frameworkapp.common.BaseActivity;
 import com.nis.frameworkapp.common.BaseFragment;
 import com.nis.frameworkapp.common.ResultStatus;
 import com.nis.frameworkapp.news.data.model.NewsList;
@@ -47,10 +48,14 @@ public class NewsListFragment extends BaseFragment implements
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View view = setupView(R.layout.news_list, container,
-                false, false);
+        View view = setupView(R.layout.news_list, container);
         initView(view);
         return view;
+    }
+
+    @Override
+    protected BaseActivity.HamburgerMenuType getHamburgerMenuType() {
+        return BaseActivity.HamburgerMenuType.HAMBURGER_MENU;
     }
 
     protected void initView(View view) {

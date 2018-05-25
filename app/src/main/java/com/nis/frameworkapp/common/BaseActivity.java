@@ -28,7 +28,11 @@ import com.nis.frameworkapp.R;
  */
 public class BaseActivity extends AppCompatActivity {
     private DrawerLayout mDrawerLayout;
-    private FloatingActionButton mFabButton;
+    public enum HamburgerMenuType {
+        NONE,
+        HAMBURGER_MENU,
+        BACK_ARROW
+    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -57,36 +61,41 @@ public class BaseActivity extends AppCompatActivity {
         mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
     }
 
-    protected void showFab() {
-        mFabButton.show();
-    }
-
-    protected void hideFab() {
-        mFabButton.hide();
-    }
-
-    protected void setupView(int sourceLayout, boolean isLockDrawer, boolean
-            isBackButtonEnabled) {
+    protected void setupView(int sourceLayout) {
         ViewGroup root = findViewById(R.id.id_container);
         View view = getLayoutInflater().inflate(sourceLayout, root, true);
-        setupContent(view);
-        if (isLockDrawer) {
-            lockDrawer();
-        } else {
-            unlockDrawer();
-        }
-        if (isBackButtonEnabled) {
-            setBackButtonToolbar();
-        } else {
-            setHomeButtonToolbar();
+        setupContent(view, getHamburgerMenuType());
+    }
+
+    protected void setupContent(View view, HamburgerMenuType hamburgerMenuType) {
+        Toolbar toolbar = view.findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        setHamburgerMenuUI(hamburgerMenuType);
+    }
+
+    private void setHamburgerMenuUI(HamburgerMenuType hamburgerMenuType){
+        switch (hamburgerMenuType){
+            case NONE:
+                lockDrawer();
+                removeHomeIcon();
+                break;
+            case HAMBURGER_MENU:
+                unlockDrawer();
+                setHomeButtonToolbar();
+                break;
+            case BACK_ARROW:
+                lockDrawer();
+                setBackButtonToolbar();
+                break;
+            default:
+                lockDrawer();
+                removeHomeIcon();
+                break;
         }
     }
 
-    protected void setupContent(View view) {
-        Toolbar toolbar = view.findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        mFabButton = view.findViewById(R.id.fab);
-        hideFab();
+    protected HamburgerMenuType getHamburgerMenuType(){
+        return HamburgerMenuType.NONE;
     }
 
     protected void setHomeButtonToolbar() {

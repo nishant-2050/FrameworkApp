@@ -14,22 +14,14 @@ public class BaseFragment extends Fragment {
         baseActivity = (BaseActivity) getActivity();
     }
 
-    protected View setupView(int rootLayout, ViewGroup container, boolean
-            isLockDrawer,
-                             boolean isBackButtonEnabled) {
+    protected View setupView(int rootLayout, ViewGroup container) {
         View view = getLayoutInflater().inflate(rootLayout, container, false);
-        if (isLockDrawer) {
-            baseActivity.lockDrawer();
-        } else {
-            baseActivity.unlockDrawer();
-        }
-        baseActivity.setupContent(view);
-        if (isBackButtonEnabled) {
-            baseActivity.setBackButtonToolbar();
-        } else {
-            baseActivity.setHomeButtonToolbar();
-        }
+        baseActivity.setupContent(view, getHamburgerMenuType());
         return view;
+    }
+
+    protected BaseActivity.HamburgerMenuType getHamburgerMenuType(){
+        return BaseActivity.HamburgerMenuType.NONE;
     }
 
     protected void showProgress(View progressView, boolean show) {

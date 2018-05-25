@@ -18,6 +18,7 @@ import com.bumptech.glide.request.RequestOptions;
 
 import com.nis.frameworkapp.R;
 import com.nis.frameworkapp.common.AppExecutors;
+import com.nis.frameworkapp.common.BaseActivity;
 import com.nis.frameworkapp.common.BaseFragment;
 import com.nis.frameworkapp.common.ResultStatus;
 import com.nis.frameworkapp.recipies.data.model.Recipe;
@@ -34,10 +35,14 @@ public class RecipeDetailFragment extends BaseFragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View view = setupView(R.layout.recipe_detail,
-                container, true, true);
+        View view = setupView(R.layout.recipe_detail, container);
         initView(view);
         return view;
+    }
+
+    @Override
+    protected BaseActivity.HamburgerMenuType getHamburgerMenuType() {
+        return BaseActivity.HamburgerMenuType.BACK_ARROW;
     }
 
     protected void initView(View view) {

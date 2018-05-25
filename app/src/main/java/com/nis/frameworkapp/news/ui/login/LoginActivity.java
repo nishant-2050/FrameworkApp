@@ -33,8 +33,13 @@ public class LoginActivity extends BaseActivity{
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setupView(R.layout.news_login, true, false);
+        setupView(R.layout.news_login);
         initView();
+    }
+
+    @Override
+    protected HamburgerMenuType getHamburgerMenuType() {
+        return HamburgerMenuType.NONE;
     }
 
     private void initView(){
