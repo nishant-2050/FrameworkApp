@@ -47,7 +47,7 @@ public class NewsListFragment extends BaseFragment implements
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View view = setupView(R.layout.container_fixed, R.layout.news_list_content, container,
+        View view = setupView(R.layout.news_list, container,
                 false, false);
         initView(view);
         return view;

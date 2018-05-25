@@ -65,17 +65,16 @@ public class BaseActivity extends AppCompatActivity {
         mFabButton.hide();
     }
 
-    protected void setupView(int rootLayout, int sourceLayout, boolean isLockDrawer, boolean
+    protected void setupView(int sourceLayout, boolean isLockDrawer, boolean
             isBackButtonEnabled) {
         ViewGroup root = findViewById(R.id.id_container);
-        View view = getLayoutInflater().inflate(rootLayout, root, true);
-        setupContent(view, sourceLayout);
+        View view = getLayoutInflater().inflate(sourceLayout, root, true);
+        setupContent(view);
         if (isLockDrawer) {
             lockDrawer();
         } else {
             unlockDrawer();
         }
-        //setupContent(view, sourceLayout);
         if (isBackButtonEnabled) {
             setBackButtonToolbar();
         } else {
@@ -83,10 +82,7 @@ public class BaseActivity extends AppCompatActivity {
         }
     }
 
-    protected void setupContent(View view, int layoutID) {
-        ViewGroup vg = view.findViewById(R.id.id_placeholder_content);
-        vg.removeAllViews();
-        getLayoutInflater().inflate(layoutID, vg, true);
+    protected void setupContent(View view) {
         Toolbar toolbar = view.findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         mFabButton = view.findViewById(R.id.fab);

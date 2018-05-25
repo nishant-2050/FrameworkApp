@@ -48,7 +48,7 @@ public class RecipeListFragment extends BaseFragment implements
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View view = setupView(R.layout.container_fixed, R.layout.recipe_list_content, container,
+        View view = setupView(R.layout.recipe_list, container,
                 false, false);
         initView(view);
         return view;

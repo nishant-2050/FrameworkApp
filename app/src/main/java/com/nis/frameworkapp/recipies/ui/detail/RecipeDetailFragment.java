@@ -34,7 +34,7 @@ public class RecipeDetailFragment extends BaseFragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View view = setupView(R.layout.container_collapsing, R.layout.recipe_detail_content,
+        View view = setupView(R.layout.recipe_detail,
                 container, true, true);
         initView(view);
         return view;

@@ -33,7 +33,7 @@ public class LoginActivity extends BaseActivity{
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setupView(R.layout.container_fixed, R.layout.news_login_content, true, false);
+        setupView(R.layout.news_login, true, false);
         initView();
     }
 

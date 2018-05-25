@@ -14,7 +14,7 @@ public class BaseFragment extends Fragment {
         baseActivity = (BaseActivity) getActivity();
     }
 
-    protected View setupView(int rootLayout, int sourceLayout, ViewGroup container, boolean
+    protected View setupView(int rootLayout, ViewGroup container, boolean
             isLockDrawer,
                              boolean isBackButtonEnabled) {
         View view = getLayoutInflater().inflate(rootLayout, container, false);
@@ -23,7 +23,7 @@ public class BaseFragment extends Fragment {
         } else {
             baseActivity.unlockDrawer();
         }
-        baseActivity.setupContent(view, sourceLayout);
+        baseActivity.setupContent(view);
         if (isBackButtonEnabled) {
             baseActivity.setBackButtonToolbar();
         } else {

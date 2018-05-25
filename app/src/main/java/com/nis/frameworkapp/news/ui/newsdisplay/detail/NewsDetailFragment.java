@@ -34,7 +34,7 @@ public class NewsDetailFragment extends BaseFragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View view = setupView(R.layout.container_collapsing, R.layout.news_detail_content,
+        View view = setupView(R.layout.news_detail,
                 container, true, true);
         initView(view);
         return view;
